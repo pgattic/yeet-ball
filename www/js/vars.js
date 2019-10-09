@@ -6,7 +6,7 @@ var
 	dimension = [document.documentElement.clientWidth, document.documentElement.clientHeight];
 	canvas.width = dimension[0] * dpr;
 	canvas.height = dimension[1] * dpr;
-	ctx.scale(dpr, dpr);
+	ctx.scale(1/dpr, 1/dpr);
 
 const
 	playerColor = "tomato"
