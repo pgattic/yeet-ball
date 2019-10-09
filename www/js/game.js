@@ -525,6 +525,7 @@ function drawDPad() {
 
 function drawGame() {
 	clearCanvas();
+	fix_dpi();
 	if (!isPaused) {
 		calcPlayerCoord();
 		acceleratePlayer();

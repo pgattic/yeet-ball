@@ -1,14 +1,22 @@
 
-var
-	dpi = window.devicePixelRatio
-	canvas = document.getElementById("GWar")
-	dimension = [document.documentElement.clientWidth, document.documentElement.clientHeight];
-	canvas.width = dimension[0];
-	canvas.height = dimension[1];
-	ctx = canvas.getContext("2d")
-	style_height = +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2)
-	style_width = +getComputedStyle(canvas).getPropertyValue("width").slice(0, -2)
-
+//get the canvas, canvas context, and dpi
+let canvas = document.getElementById('GWar'),
+    ctx = canvas.getContext('2d'),
+    dpi = window.devicePixelRatio;
+function fix_dpi() {
+//create a style object that returns width and height
+  let style = {
+    height() {
+      return +getComputedStyle(canvas).getPropertyValue('height').slice(0,-2);
+    },
+    width() {
+      return +getComputedStyle(canvas).getPropertyValue('width').slice(0,-2);
+    }
+  }
+//set the correct attributes for a crystal clear image!
+  canvas.setAttribute('width', style.width() * dpi);
+  canvas.setAttribute('height', style.height() * dpi);
+}
 canvas.setAttribute('height', style_height * dpi);
 canvas.setAttribute('width', style_width * dpi);
 const
