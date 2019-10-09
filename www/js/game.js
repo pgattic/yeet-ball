@@ -259,12 +259,12 @@ function drawBadGuy() {
 			enemyX[i] = enemyX[i] + enemyDX;
 			enemyY[i] = enemyY[i] + enemyDY;
 			ctx.beginPath();
-			ctx.arc(enemyX[i], enemyY[i], enemyRadius + 3, 0, Math.PI * 2, false);
+			ctx.arc(enemyX[i] + 0.5, enemyY[i] + 0.5, enemyRadius + 3, 0, Math.PI * 2, false);
 			ctx.fillStyle = enemyOutlineColor;
 			ctx.fill();
 			ctx.closePath();
 			ctx.beginPath();
-			ctx.arc(enemyX[i], enemyY[i], enemyRadius, 0, Math.PI * 2, false);
+			ctx.arc(enemyX[i] + 0.5, enemyY[i] + 0.5, enemyRadius, 0, Math.PI * 2, false);
 			ctx.fillStyle = enemyColor;
 			ctx.fill();
 			ctx.closePath();
@@ -525,7 +525,6 @@ function drawDPad() {
 
 function drawGame() {
 	clearCanvas();
-	fix_dpi();
 	if (!isPaused) {
 		calcPlayerCoord();
 		acceleratePlayer();
@@ -555,7 +554,7 @@ function drawGame() {
 	drawDPad();
 	ctx.font = "16px Arial";
 	ctx.fillStyle = lineColor;
-	ctx.fillText("Lives: " + playerLives, 20 + player.x - canvas.width / 2, 30 + player.y - canvas.height / 2);
-	ctx.fillText("Points: " + playerPoints, 20 + player.x - canvas.width / 2, 54 + player.y - canvas.height / 2);
-	ctx.fillText("Super: " + powerUpsLeft, 20 + player.x - canvas.width / 2, 78 + player.y - canvas.height / 2);
+	ctx.fillText("Lives: " + playerLives, 20.5 + player.x - canvas.width / 2, 30.5 + player.y - canvas.height / 2);
+	ctx.fillText("Points: " + playerPoints, 20.5 + player.x - canvas.width / 2, 54.5 + player.y - canvas.height / 2);
+	ctx.fillText("Super: " + powerUpsLeft, 20.5 + player.x - canvas.width / 2, 78.5 + player.y - canvas.height / 2);
 }
