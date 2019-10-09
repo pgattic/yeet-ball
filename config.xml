@@ -23,6 +23,7 @@
 	<platform name="ios" />
 	<platform name="android" />
 	<platform name="winphone" />
+	<icon src="icon.png" />
 
 	<content src="index.html" />
 	<access origin="*" />
