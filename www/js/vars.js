@@ -1,24 +1,13 @@
 
-function fix_dpi() {
-//get CSS height
-//the + prefix casts it to an integer
-//the slice method gets rid of "px"
-let ;
-//get CSS width
-let ;
-//scale the canvas
-}
-
-var
-	dpi = window.devicePixelRatio
+var 
+	dpr = window.devicePixelRatio || 1;
 	canvas = document.getElementById("GWar")
-	dimension = [document.documentElement.clientWidth, document.documentElement.clientHeight];
 	ctx = canvas.getContext("2d")
-	style_height = +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2)
-	style_width = +getComputedStyle(canvas).getPropertyValue("width").slice(0, -2)
+	dimension = [document.documentElement.clientWidth, document.documentElement.clientHeight];
+	canvas.width = dimension[0] * dpr;
+	canvas.height = dimension[1] * dpr;
+	ctx.scale(dpr, dpr);
 
-canvas.setAttribute('height', style_height * dpi);
-canvas.setAttribute('width', style_width * dpi);
 const
 	playerColor = "tomato"
 	playerOutlineColor = "red"
