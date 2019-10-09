@@ -17,8 +17,7 @@ function fix_dpi() {
   canvas.setAttribute('width', style.width() * dpi);
   canvas.setAttribute('height', style.height() * dpi);
 }
-canvas.setAttribute('height', style_height * dpi);
-canvas.setAttribute('width', style_width * dpi);
+
 const
 	playerColor = "tomato"
 	playerOutlineColor = "red"
