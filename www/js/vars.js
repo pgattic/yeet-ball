@@ -1,13 +1,11 @@
-
-var 
-	dpr = window.devicePixelRatio || 1;
-	canvas = document.getElementById("GWar")
+var
+	canvas = document.getElementById("Main")
 	ctx = canvas.getContext("2d")
 	dimension = [document.documentElement.clientWidth, document.documentElement.clientHeight];
-	canvas.width = dimension[0] * dpr;
-	canvas.height = dimension[1] * dpr;
-	ctx.scale(1/dpr, 1/dpr);
-
+	canvas.width = dimension[0];
+	canvas.height = dimension[1];
+	
+//GAME
 const
 	playerColor = "tomato"
 	playerOutlineColor = "red"
@@ -20,6 +18,10 @@ const
 	bgColor = "white"
 	miniMapColor = "blue"
 	gridColor = "lightgray"
+
+	inSplash = 1
+	inMenu = 2
+	inGame = 3
 
 	screenWidth = 600
 	screenHeight = 600
@@ -61,6 +63,10 @@ const
 	kToPowerUp = 40
 	powerUpSize = 20
 	
+	menuPlayButtonRadius = canvas.height / 4
+	menuPlayButtonX = canvas.width / 2
+	menuPlayButtonY = canvas.height * (3 / 5)
+
 var
 	mouseX = canvas.width / 2
 	mouseY = canvas.height / 2
@@ -73,7 +79,6 @@ var
 	dTouchX = dPadX
 	dTouchY = dPadY
 
-ctx.translate((canvas.width - screenWidth) / 2, (canvas.height - screenHeight) / 2);
 
 	player = {
 		x : playerStartX,
@@ -114,5 +119,20 @@ ctx.translate((canvas.width - screenWidth) / 2, (canvas.height - screenHeight) /
 	powerUpsLeft = 3
 	playerPoints = 0		
 
-	inGame = true
-	inMenu = false
+	gameState = inSplash
+	splashFrames = 300;
+
+function onDeviceReady() {
+	document.removeEventListener('deviceready', onDeviceReady);
+
+	// Set AdMobAds options:
+	admob.setOptions({
+        publisherId:          "ca-app-pub-7332676129708879~9401777336",  // Required
+        interstitialAdId:     "ca-app-pub-7332676129708879/6392470615",  // Optional
+//		tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
+//		tappxIdAndroid:       "/XXXXXXXXX/Pub-XXXX-Android-AAAA",        // Optional
+//		tappxShare:           0.5                                        // Optional
+	});
+}
+
+document.addEventListener("deviceready", onDeviceReady);

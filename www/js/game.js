@@ -1,26 +1,11 @@
-function onDeviceReady() {
-	document.removeEventListener('deviceready', onDeviceReady, false);
-
-	// Set AdMobAds options:
-	admob.setOptions({
-        publisherId:          "ca-app-pub-7332676129708879~9401777336",  // Required
-        interstitialAdId:     "ca-app-pub-7332676129708879/6392470615",  // Optional
-//		tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
-//		tappxIdAndroid:       "/XXXXXXXXX/Pub-XXXX-Android-AAAA",        // Optional
-//		tappxShare:           0.5                                        // Optional
-	});
-}
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-function touchMoveHandler(e) {
+function gameTouchMoveHandler(e) {
 	var touches = e.changedTouches;
 	for(var i=0; i < e.changedTouches.length; i++) {
 		var touchId = e.changedTouches[i].identifier;
 		var touchX = e.changedTouches[i].pageX;
 		var touchY = e.changedTouches[i].pageY;
 		if (!isPaused) {
-			if (Math.abs(touchX - dPadX) <= dPadRadius && Math.abs(touchY - dPadY) <= dPadRadius) {
+			if (Math.abs(touchX - dPadX) <= dPadRadius * 2 && Math.abs(touchY - dPadY) <= dPadRadius * 2) {
 				dTouchX = touchX + player.x - canvas.width / 2;
 				dTouchY = touchY + player.y - canvas.height / 2;
 				if (touchY - dPadY <= 25) {
@@ -48,7 +33,7 @@ function touchMoveHandler(e) {
 	}
 }
 
-function touchHandler(e) {
+function gameTouchHandler(e) {
 	var touches = e.changedTouches;
 	for(var i=0; i < e.changedTouches.length; i++) {
 		var touchId = e.changedTouches[i].identifier;
@@ -109,7 +94,7 @@ function touchHandler(e) {
 	}
 }
 
-function touchEndHandler() {
+function gameTouchEndHandler() {
 	upPressed = false;
 	downPressed = false;
 	leftPressed = false;
@@ -333,8 +318,8 @@ function playerKill() {
 			}
 			if (playerLives == 0) {
 				alert("Game Over!\nYou killed " + (enemysKilled - 1) + " enemies.");
-			//	localforage.setItem('record', playerPoints);
 				
+				gameState = inMenu;
 
 				mouseX = canvas.width / 2
 				mouseY = canvas.height / 2
@@ -348,7 +333,6 @@ function playerKill() {
 				dTouchY = dPadY
 
 				ctx.setTransform(1, 0, 0, 1, 0, 0);
-				ctx.translate((canvas.width - screenWidth) / 2, (canvas.height - screenHeight) / 2);
 
 				player.x = playerStartX
 				player.y = playerStartY
@@ -540,6 +524,10 @@ function drawGame() {
 		drawPowerUp();
 		drawMiniMap()
 		superTimer--;
+		if (!rightPressed && !leftPressed && !upPressed && !downPressed) {
+			dTouchX = player.x - canvas.width / 2 + dPadX
+			dTouchY = player.y - canvas.height / 2 + dPadY
+		}
 	}
 	else {
 		drawBG();
@@ -548,7 +536,8 @@ function drawGame() {
 		drawMiniMap();
 		ctx.font = "bolder 72px Arial";
 		ctx.fillStyle = lineColor;
-		ctx.fillText("PAUSED", player.x - 150, player.y);
+		ctx.textAlign = "center";
+		ctx.fillText("PAUSED", player.x, player.y);
 	}
 	drawPause();
 	drawDPad();

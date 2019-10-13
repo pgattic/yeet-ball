@@ -1,30 +1,24 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget
-	xmlns="http://www.w3.org/ns/widgets"
-	xmlns:gap="http://phonegap.com/ns/1.0"
-	id="com.savestate.yeetball"
-	versionCode="11"
-	version="1.0.1" >
+<widget id="com.savestate.yeetball" version="1.0.2" versionCode="2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" >
 
-	<name>Yeet Ball</name>
+	<name short="YBall">Yeet Ball</name>
 
-	<description>
-		
-	</description>
+	<description>A simple shooter game, developed by SaveState.</description>
 
-	<author email="pgattic@gmail.com" href="pgattic.github.io">
-		SaveState
-	</author>
-
-	<preference name="StatusBarOverlaysWebView" value="true" />
-	<preference name="orientation" value="landscape" />
-	<preference name="fullscreen" value="true" />
-
-	<platform name="ios" />
-	<platform name="android" />
-	<platform name="winphone" />
-	<icon src="icon.png" />
+	<author email="pgattic@gmail.com" href="pgattic.github.io" >SaveState</author>
 
 	<content src="index.html" />
 	<access origin="*" />
+
+	<plugin name="phonegap-admob" source="npm"/>
+
+	<preference name="BackgroundColor" value="0x00ffffff" />
+	<preference name="DefaultVolumeStream" value="media" />
+	<preference name="FullScreen" value="true" />
+	<preference name="KeepRunning" value="false" />
+	<preference name="Orientation" value="landscape" />
+	<preference name="ShowTitle" value="false" />
+
+	<icon src="icon.png" />
+
 </widget>
