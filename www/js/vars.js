@@ -1,10 +1,12 @@
 var
-	canvas = document.getElementById("Main")
-	ctx = canvas.getContext("2d")
+	canvas = document.getElementById("Main");
+	ctx = canvas.getContext("2d");
 	dimension = [document.documentElement.clientWidth, document.documentElement.clientHeight];
 	canvas.width = dimension[0];
 	canvas.height = dimension[1];
-	
+	splashImg = document.getElementById("splash");
+	saveState = document.getElementById("logo");
+
 //GAME
 const
 	playerColor = "tomato"

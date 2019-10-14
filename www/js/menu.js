@@ -62,13 +62,14 @@ function drawPlayButton() {
 }
 
 function drawLogo() {
-	ctx.drawImage(logo, canvas.width / 2 - 355 / 2, canvas.height - 40);
+	ctx.drawImage(saveState, canvas.width / 2 - 355 / 2, canvas.height - 40);
 }
 
 function drawTitle() {
-	ctx.font = "32px Arial";
+	ctx.font = "64px Arial";
 	ctx.fillStyle = "black";
-	ctx.fillText = ("Yeet Ball", menuPlayButtonY, menuPlayButtonRadius);
+	ctx.textAlign = "center";
+	ctx.fillText("YEET BALL", menuPlayButtonX, menuPlayButtonRadius);
 }
 
 function drawMenu() {

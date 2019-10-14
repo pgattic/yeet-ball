@@ -6,19 +6,21 @@ document.addEventListener("touchstart", touchHandler);
 document.addEventListener("touchend", touchEndHandler);
 
 function pauseHandler() {
-	if (gameState == inGame && !isPaused) {
+	if (gameState == inGame) {
 		isPaused = true;
 	}
 }
 
 function backButtonHandler() {
-	if (gameState == inGame && !isPaused) {
+	if (gameState == inGame) {
 		isPaused = true;
 	}
 }
 
 function menuButtonHandler() {
-	
+	if (gameState == inGame) {
+		isPaused = true;
+	}
 }
 
 function touchMoveHandler(e) {
