@@ -18,6 +18,7 @@
 	<preference name="KeepRunning" value="false" />
 	<preference name="Orientation" value="landscape" />
 	<preference name="ShowTitle" value="false" />
+	<preference name="android-targetSdkVersion" value="28" />
 
 	<icon src="icon.png" />
 
